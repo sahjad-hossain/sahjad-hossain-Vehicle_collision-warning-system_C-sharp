@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<MultipleObjectTracking xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.baselabs.de/DMLSchema/v1">
+  <DisplayName>DataFusion</DisplayName>
+  <System>
+    <DisplayName>Demonstrator vehicle</DisplayName>
+    <Description>A demonstrator vehicle equipped with two sensors.</Description>
+    <SystemModel typeName="DataFusion.CVVectorialModel">
+      <ValueCondition name="SigmaAccelerationX" referencedName="SigmaAccelerationX" value="2" />
+      <ValueCondition name="SigmaAccelerationY" referencedName="SigmaAccelerationY" value="2" />
+    </SystemModel>
+    <ExistenceModel>
+      <ValueCondition xsi:type="ProcessNoiseConditionType" name="ProcessNoise" value="0.001" />
+    </ExistenceModel>
+    <NumberOfTracksMax>100</NumberOfTracksMax>
+  </System>
+  <Sensor active="true">
+    <DisplayName>RadarSensor</DisplayName>
+    <Color>Color3</Color>
+    <DetectionModel typeName="DataFusion.RadarDetectionModel" dependsOn="State">
+      <ValueCondition name="DetectionAngleMax" referencedName="DetectionAngleMax" value="0.16" />
+      <ValueCondition name="DetectionAngleMin" referencedName="DetectionAngleMin" value="-0.16" />
+      <ValueCondition name="DetectionRangeMax" referencedName="DetectionRangeMax" value="200" />
+      <ValueCondition name="DetectionRangeMin" referencedName="DetectionRangeMin" value="1" />
+    </DetectionModel>
+    <MeasurementModel typeName="DataFusion.RadarMeasurementModel">
+      <EstimatorCondition name="EgoVelocity" referencedName="EgoVelocity">
+        <Estimator name="egoMotionEstimator" dimensionName="V" />
+      </EstimatorCondition>
+      <EstimatorCondition name="EgoYawRate" referencedName="EgoYawRate">
+        <Estimator name="egoMotionEstimator" dimensionName="W" />
+      </EstimatorCondition>
+      <ValueCondition name="SensorPositionX" referencedName="SensorPositionX" value="3.55" />
+      <ValueCondition name="SensorPositionY" referencedName="SensorPositionY" value="0" />
+      <ValueCondition name="SensorRotationZ" referencedName="SensorRotationZ" value="0" />
+      <ValueCondition name="SigmaAzimuth" referencedName="SigmaAzimuth" value="0.01" />
+      <ValueCondition name="SigmaRange" referencedName="SigmaRange" value="1.2" />
+      <ValueCondition name="SigmaRangeRate" referencedName="SigmaRangeRate" value="0.45" />
+    </MeasurementModel>
+    <FalseAlarmModel typeName="Baselabs.Statistics.PoissonClutterModel">
+      <ValueCondition name="Lambda" value="0.0001" />
+    </FalseAlarmModel>
+    <TrackProposer typeName="DataFusion.RadarTrackProposer">
+      <EstimatorCondition name="EgoVelocity" referencedName="EgoVelocity2">
+        <Estimator name="egoMotionEstimator" dimensionName="V" />
+      </EstimatorCondition>
+      <EstimatorCondition name="EgoYawRate" referencedName="EgoYawRate2">
+        <Estimator name="egoMotionEstimator" dimensionName="W" />
+      </EstimatorCondition>
+      <ReferenceCondition name="SensorPositionX" referencedName="SensorPositionX2" referenceeName="SensorPositionX" />
+      <ReferenceCondition name="SensorPositionY" referencedName="SensorPositionY2" referenceeName="SensorPositionY" />
+      <ReferenceCondition name="SensorRotationZ" referencedName="SensorRotationZ2" referenceeName="SensorRotationZ" />
+      <ValueCondition name="SigmaVx" referencedName="SigmaVx" value="1.4" />
+      <ValueCondition name="SigmaVy" referencedName="SigmaVy" value="1.2" />
+      <ValueCondition name="SigmaX" referencedName="SigmaX" value="1" />
+      <ValueCondition name="SigmaY" referencedName="SigmaY" value="1" />
+      <ValueCondition name="InitialExistenceProbability" referencedName="InitialExistenceProbability" value="0.8" />
+    </TrackProposer>
+    <OnTracksPredicted />
+    <NumberOfMeasurementsMax>50</NumberOfMeasurementsMax>
+    <DetectionModelSamples>100</DetectionModelSamples>
+    <GateProbability>0.99</GateProbability>
+  </Sensor>
+  <Sensor active="true">
+    <DisplayName>CameraSensor</DisplayName>
+    <Color>Color4</Color>
+    <DetectionModel typeName="DataFusion.CameraDetectionModel" dependsOn="State">
+      <ReferenceCondition name="DetectionAngleMax" referencedName="DetectionAngleMax2" referenceeName="DetectionAngleMax" />
+      <ReferenceCondition name="DetectionAngleMin" referencedName="DetectionAngleMin2" referenceeName="DetectionAngleMin" />
+      <ReferenceCondition name="DetectionRangeMax" referencedName="DetectionRangeMax2" referenceeName="DetectionRangeMax" />
+      <ReferenceCondition name="DetectionRangeMin" referencedName="DetectionRangeMin2" referenceeName="DetectionRangeMin" />
+    </DetectionModel>
+    <MeasurementModel typeName="DataFusion.CameraMeasurementModel">
+      <ValueCondition name="SigmaColumn" referencedName="SigmaColumn" value="6" />
+      <ValueCondition name="SigmaRow" referencedName="SigmaRow" value="6" />
+    </MeasurementModel>
+    <FalseAlarmModel typeName="Baselabs.Statistics.PoissonClutterModel">
+      <ValueCondition name="Lambda" value="0.0001" />
+    </FalseAlarmModel>
+    <TrackProposer typeName="DataFusion.CameraTrackProposer">
+      <EstimatorCondition name="EgoVelocity" referencedName="EgoVelocity3">
+        <Estimator name="egoMotionEstimator" dimensionName="V" />
+      </EstimatorCondition>
+    </TrackProposer>
+    <OnTracksPredicted />
+    <NumberOfMeasurementsMax>50</NumberOfMeasurementsMax>
+    <DetectionModelSamples>100</DetectionModelSamples>
+    <GateProbability>0.99</GateProbability>
+  </Sensor>
+  <TrackRemover typeName="DataFusion.ClutterRemover">
+    <ValueCondition name="MinimumExistenceProbability" referencedName="MinimumExistenceProbability" value="0.1" />
+  </TrackRemover>
+</MultipleObjectTracking>

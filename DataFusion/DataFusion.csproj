@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Baselabs.Statistics.Tooling.7.1.3303.3520\build\Baselabs.Statistics.Tooling.props" Condition="Exists('..\packages\Baselabs.Statistics.Tooling.7.1.3303.3520\build\Baselabs.Statistics.Tooling.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F5517E1B-1740-48EB-9FAC-14BE1ABE34E5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataFusion</RootNamespace>
+    <AssemblyName>DataFusion</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;DATAFUSIONEVENTS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;DATAFUSIONEVENTS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="atk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
+      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\atk-sharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Baselabs.Statistics, Version=7.1.0.0, Culture=neutral, PublicKeyToken=d133ec7471116f7d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Baselabs.Statistics.7.1.3303.3520\lib\net40\Baselabs.Statistics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Baselabs.Statistics.Examples">
+      <HintPath>..\packages\Baselabs.Statistics.Examples.7.1.3303.3520\lib\net40\Baselabs.Statistics.Examples.dll</HintPath>
+    </Reference>
+    <Reference Include="Baselabs.System, Version=7.1.0.0, Culture=neutral, PublicKeyToken=d133ec7471116f7d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Baselabs.System.7.1.3303.3520\lib\net40\Baselabs.System.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="cairo-sharp, Version=1.12.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\cairo-sharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
+      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\gdk-sharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="gio-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
+      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\gio-sharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="glib-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
+      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\glib-sharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="gtk-dotnet, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
+      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\gtk-dotnet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="gtk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
+      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\gtk-sharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OxyPlot, Version=1.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Core.1.0.0\lib\net45\OxyPlot.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OxyPlot.GtkSharp3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=245eacd6b5d2d338, processorArchitecture=x86">
+      <HintPath>..\packages\OxyPlot.GtkSharp3.1.0.0\lib\net45\OxyPlot.GtkSharp3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OxyPlot.WindowsForms, Version=1.0.0.0, Culture=neutral, PublicKeyToken=245eacd6b5d2d338, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.WindowsForms.1.0.0\lib\net45\OxyPlot.WindowsForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="pango-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
+      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\pango-sharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CVVectorialModel.cs" />
+    <Compile Include="DataFusion2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataFusion2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataFusionConnector.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataFusionConnector.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataFusionVisualization1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataFusionVisualization1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CameraDetectionModel.cs" />
+    <Compile Include="RadarDetectionModel.cs" />
+    <Compile Include="EgoMotionCompensation.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CameraMeasurementModel.cs" />
+    <Compile Include="RadarMeasurementModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RadarTrackProposer.cs" />
+    <Compile Include="TimeToCollision.cs" />
+    <Compile Include="CameraTrackProposer.cs" />
+    <Compile Include="ClutterRemover.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="DataFusion1.dml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataFusion2.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataFusion1.dml</DependentUpon>
+      <LastGenOutput>DataFusion2.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataFusionConnector.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataFusion1.dml</DependentUpon>
+      <LastGenOutput>DataFusionConnector.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataFusionVisualization1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataFusion1.dml</DependentUpon>
+      <LastGenOutput>DataFusionVisualization1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\gtk-sharp-3.3.22.6.4\build\net40\gtk-sharp-3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\gtk-sharp-3.3.22.6.4\build\net40\gtk-sharp-3.targets'))" />
+    <Error Condition="!Exists('..\packages\Baselabs.Statistics.7.1.3303.3520\build\Baselabs.Statistics.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Baselabs.Statistics.7.1.3303.3520\build\Baselabs.Statistics.targets'))" />
+    <Error Condition="!Exists('..\packages\Baselabs.Statistics.Tooling.7.1.3303.3520\build\Baselabs.Statistics.Tooling.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Baselabs.Statistics.Tooling.7.1.3303.3520\build\Baselabs.Statistics.Tooling.props'))" />
+  </Target>
+  <Import Project="..\packages\gtk-sharp-3.3.22.6.4\build\net40\gtk-sharp-3.targets" Condition="Exists('..\packages\gtk-sharp-3.3.22.6.4\build\net40\gtk-sharp-3.targets')" />
+  <Import Project="..\packages\Baselabs.Statistics.7.1.3303.3520\build\Baselabs.Statistics.targets" Condition="Exists('..\packages\Baselabs.Statistics.7.1.3303.3520\build\Baselabs.Statistics.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

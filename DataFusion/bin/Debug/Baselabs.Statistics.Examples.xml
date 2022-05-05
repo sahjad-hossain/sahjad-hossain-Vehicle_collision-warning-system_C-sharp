@@ -1,0 +1,1161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Baselabs.Statistics.Examples</name>
+  </assembly>
+  <members>
+    <member name="T:Baselabs.Statistics.Models.MeasurementModels.CameraImagePlaneMeasurementModel">
+      <summary>
+            A measurement model of a camera sensor with a <see cref="T:Baselabs.Statistics.Spaces.CASpace" /> as state space.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.MeasurementModels.CameraImagePlaneMeasurementModel.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Models.MeasurementModels.CameraImagePlaneMeasurementModel" /> class
+            with default measurement noise covariance.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.MeasurementModels.CameraImagePlaneMeasurementModel.#ctor(Baselabs.Statistics.Spaces.PositiveDefiniteMatrix{Baselabs.Statistics.Spaces.CameraSpace})">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Models.MeasurementModels.CameraImagePlaneMeasurementModel" /> class
+            with the given measurement noise covariance matrix. 
+            </summary>
+      <param name="noiseMatrix">The measurement noise covariance matrix.</param>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.MeasurementModels.CameraImagePlaneMeasurementModel.FillTransitionMatrix(Baselabs.Statistics.Spaces.CASpace,Baselabs.Statistics.Spaces.Matrix{Baselabs.Statistics.Spaces.CameraSpace,Baselabs.Statistics.Spaces.CASpace}@)">
+      <summary>
+            When overridden, fills the given matrix with the measurement matrix of the model.
+            </summary>
+      <param name="predictedStateExpectation">
+            The predicted system state. 
+            This state will be used as linearization point for calculating the Jacobian.
+            </param>
+      <param name="H">
+            The <see cref="T:Baselabs.Statistics.Spaces.Matrix`2" /> instance to write
+            the measurement matrix of the model to.
+            </param>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.MeasurementModels.CameraImagePlaneMeasurementModel.h(Baselabs.Statistics.Spaces.CASpace,Baselabs.Statistics.Spaces.CameraSpace@)">
+      <summary>
+            Calculates the predicted measurement from the given <paramref name="state" />.
+            </summary>
+      <param name="state">The state.</param>
+      <param name="predictedMeasurement">The predicted measurement.</param>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.CameraImagePlaneMeasurementModel.SigmaColumn">
+      <summary>
+            The standard deviation of the camera's image plane column measurement noise in pixels.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.CameraImagePlaneMeasurementModel.SigmaRow">
+      <summary>
+            The standard deviation of the camera's image plane row measurement noise in pixels.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, infinite or not a number.</exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Models.MeasurementModels.RadarMeasurementModel">
+      <summary>
+            A measurement model of a generic radar sensor with a <see cref="T:Baselabs.Statistics.Spaces.CASpace" /> as state space.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.MeasurementModels.RadarMeasurementModel.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Models.MeasurementModels.RadarMeasurementModel" /> class
+            with a default measurement noise covariance matrix.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.MeasurementModels.RadarMeasurementModel.#ctor(System.Double,System.Double,System.Double)">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Models.MeasurementModels.RadarMeasurementModel" /> class with the
+            specified standard deviations of the measurement noise. 
+            Only the main diagonal of the measurement noise covariance matrix will be initialized.
+            </summary>
+      <param name="sigmaRange">The standard deviation of the range noise.</param>
+      <param name="sigmaPhi">The standard deviation of the azimuth noise.</param>
+      <param name="sigmaRangeRate">The standard deviation of the range rate noise.</param>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.RadarMeasurementModel.SigmaAzimuth">
+      <summary>
+            The standard deviation of the radar's azimuth measurement noise in radians.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.RadarMeasurementModel.SigmaRange">
+      <summary>
+            The standard deviation of the radar's range measurement noise in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.RadarMeasurementModel.SigmaRangeRate">
+      <summary>
+            The standard deviation of the radar's range rate measurement noise in m/s.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel">
+      <summary>
+            Describes a radar that observes the closest reflection point of an extended object.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel" /> class.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel.#ctor(System.Double,System.Double,System.Double)">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel" /> class.
+            </summary>
+      <param name="sigmaRange">The standard deviation of the range noise.</param>
+      <param name="sigmaPhi">The standard deviation of the azimuth noise.</param>
+      <param name="sigmaRangeRate">The standard deviation of the range rate noise.</param>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel.GetExtendedObject(Baselabs.Statistics.Spaces.CASpace)">
+      <summary>
+            Creates an extended object using the <see cref="P:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel.ObjectWidth" />, <see cref="P:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel.ObjectLength" /> and 
+            <see cref="P:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel.Wheelbase" />.
+            </summary>
+      <param name="state">The state of the object.</param>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel.ObjectLength">
+      <summary>
+            Gets or sets the length of the object in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less than or equal to zero, infinity or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel.ObjectWidth">
+      <summary>
+            Gets or sets the width of the object in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less than or equal to zero, infinity or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel.SigmaAzimuth">
+      <summary>
+            The standard deviation of the radar's azimuth measurement noise in radians.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel.SigmaRange">
+      <summary>
+            The standard deviation of the radar's range measurement noise in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel.SigmaRangeRate">
+      <summary>
+            The standard deviation of the radar's range rate measurement noise in m/s.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SixPointRadarMeasurementModel.Wheelbase">
+      <summary>
+            Gets or sets the distance between the front and rear axle in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less than or equal to zero, infinity or not a number.</exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Models.MeasurementModels.SmartSensorLongitudinalVelocityMeasurementModel">
+      <summary>
+            A measurement model of a smart sensor with <see cref="T:Baselabs.Statistics.Spaces.CASpace" /> as state space and <see cref="T:Baselabs.Statistics.Spaces.CVxSpace" /> as 
+            measurement space.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.MeasurementModels.SmartSensorLongitudinalVelocityMeasurementModel.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Models.MeasurementModels.SmartSensorLongitudinalVelocityMeasurementModel" /> class
+            with a default measurement noise covariance matrix.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.MeasurementModels.SmartSensorLongitudinalVelocityMeasurementModel.h(Baselabs.Statistics.Spaces.CASpace,Baselabs.Statistics.Spaces.CVxSpace@)">
+      <summary>
+            Calculates the predicted measurement from the given <paramref name="state" />.
+            </summary>
+      <param name="state">The state.</param>
+      <param name="predictedMeasurement">The predicted measurement.</param>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SmartSensorLongitudinalVelocityMeasurementModel.NoiseScalingFactorPosition">
+      <summary>
+            The position noise scale factor with the X distance to the object.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SmartSensorLongitudinalVelocityMeasurementModel.NoiseScalingFactorVelocity">
+      <summary>
+            The velocity noise scale factor with the X distance to the object.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SmartSensorLongitudinalVelocityMeasurementModel.SigmaPositionX">
+      <summary>
+            The standard deviation of the smart sensor's X position measurement noise in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SmartSensorLongitudinalVelocityMeasurementModel.SigmaPositionY">
+      <summary>
+            The standard deviation of the smart sensor's Y position measurement noise in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SmartSensorLongitudinalVelocityMeasurementModel.SigmaVelocityX">
+      <summary>
+            The standard deviation of the smart sensor's X velocity measurement noise in m/s.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Models.MeasurementModels.SmartSensorMeasurementModel">
+      <summary>
+            A measurement model of a smart sensor with <see cref="T:Baselabs.Statistics.Spaces.CASpace" /> as state space and <see cref="T:Baselabs.Statistics.Spaces.CVComponentsSpace" /> as 
+            measurement space.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.MeasurementModels.SmartSensorMeasurementModel.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Models.MeasurementModels.SmartSensorMeasurementModel" /> class
+            with a default measurement noise covariance matrix.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.MeasurementModels.SmartSensorMeasurementModel.h(Baselabs.Statistics.Spaces.CASpace,Baselabs.Statistics.Spaces.CVComponentsSpace@)">
+      <summary>
+            Calculates the predicted measurement from the given <paramref name="state" />.
+            </summary>
+      <param name="state">The state.</param>
+      <param name="predictedMeasurement">The predicted measurement.</param>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SmartSensorMeasurementModel.NoiseScalingFactorPosition">
+      <summary>
+            The position noise scale factor with the X distance to the object.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SmartSensorMeasurementModel.NoiseScalingFactorVelocity">
+      <summary>
+            The velocity noise scale factor with the X distance to the object. 
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SmartSensorMeasurementModel.SigmaPositionX">
+      <summary>
+            The standard deviation of the smart sensor's X position measurement noise in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SmartSensorMeasurementModel.SigmaPositionY">
+      <summary>
+            The standard deviation of the smart sensor's Y position measurement noise in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SmartSensorMeasurementModel.SigmaVelocityX">
+      <summary>
+            The standard deviation of the smart sensor's X velocity measurement noise in m/s.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.MeasurementModels.SmartSensorMeasurementModel.SigmaVelocityY">
+      <summary>
+            The standard deviation of the smart sensor's Y velocity measurement noise in m/s.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Models.SystemModels.CAVectorialModel">
+      <summary>
+            A motion model of an object represented by a position, a heading, a velocity and an acceleration stored in a <see cref="T:Baselabs.Statistics.Spaces.CASpace" />.
+            The model assumes a motion with a constant acceleration and heading.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.SystemModels.CAVectorialModel.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Models.SystemModels.CAVectorialModel" /> class
+            with a default process noise covariance matrix.
+            </summary>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.SystemModels.CAVectorialModel.SigmaAcceleration">
+      <summary>
+            The standard deviation of the acceleration process noise [m/s²].
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.SystemModels.CAVectorialModel.SigmaAngularRate">
+      <summary>
+            The standard deviation of the angular rate process noise in rad/s.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.SystemModels.CAVectorialModel.SigmaJerk">
+      <summary>
+            The standard deviation of the jerk process noise [m/s³].
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, infinite or not a number.</exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Models.SystemModels.CTRVModel">
+      <summary>
+            A motion model of an object represented by a position, a heading, a velocity, and a
+            turn rate stored in a <see cref="T:Baselabs.Statistics.Spaces.CTRVSpace" />. The model assumes a motion with a constant
+            turn rate and velocity. The error space contains the acceleration and the angular
+            acceleration of the object.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.SystemModels.CTRVModel.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Models.SystemModels.CTRVModel" /> class
+            with a default process noise covariance matrix.
+            </summary>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.SystemModels.CTRVModel.SigmaAcceleration">
+      <summary>
+            The standard deviation for the process noise of the acceleration [m/s²].
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.SystemModels.CTRVModel.SigmaAngularAcceleration">
+      <summary>
+            The standard deviation for the process noise of the angular acceleration [rad/s²].
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Models.SystemModels.CVVectorialModel">
+      <summary>
+            A motion model of an object represented by a position, a heading, and a velocity stored in a <see cref="T:Baselabs.Statistics.Spaces.CVSpace" />.
+            The model assumes a motion with a constant velocity and heading.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Models.SystemModels.CVVectorialModel.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Models.SystemModels.CVVectorialModel" /> class
+            with a default process noise covariance matrix.
+            </summary>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.SystemModels.CVVectorialModel.SigmaAcceleration">
+      <summary>
+            The standard deviation of the acceleration process noise [m/s²].
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Models.SystemModels.CVVectorialModel.SigmaAngularRate">
+      <summary>
+            The standard deviation of the angular rate process noise in rad/s.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, infinite or not a number.</exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Spaces.CameraSpace">
+      <summary>
+            A space that contains the values of a typical camera detection in camera's image plane.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Spaces.CameraSpace.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Spaces.CameraSpace" /> class.
+            </summary>
+    </member>
+    <member name="P:Baselabs.Statistics.Spaces.CameraSpace.Column">
+      <summary>
+            The column component of the detection in camera's image plane [pixels].
+            </summary>
+    </member>
+    <member name="P:Baselabs.Statistics.Spaces.CameraSpace.Row">
+      <summary>
+            The row component of the detection in camera's image plane [pixels].
+            </summary>
+    </member>
+    <member name="T:Baselabs.Statistics.Spaces.CVxSpace">
+      <summary>
+            A state space containing the position and a longitudinal velocity component of an object.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Spaces.CVxSpace.#ctor">
+      <summary>
+            Initializes a new instance of <see cref="T:Baselabs.Statistics.Spaces.CVxSpace" /> class.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Spaces.CVxSpace.#ctor(System.Int32)">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Spaces.CVxSpace" /> class
+            with the number of additional dimensions from a derived space.
+            </summary>
+      <param name="additionalDimensions">The number of additional dimensions a derived space adds.</param>
+    </member>
+    <member name="P:Baselabs.Statistics.Spaces.CVxSpace.Vx">
+      <summary>
+            Gets or sets the x component of the velocity [m/s].
+            </summary>
+    </member>
+    <member name="P:Baselabs.Statistics.Spaces.CVxSpace.X">
+      <summary>
+            Gets or sets the x position [m].
+            </summary>
+    </member>
+    <member name="P:Baselabs.Statistics.Spaces.CVxSpace.Y">
+      <summary>
+            Gets or sets the y position [m].
+            </summary>
+    </member>
+    <member name="T:Baselabs.Statistics.Tracking.Management.CameraTrackProposer">
+      <summary>
+            Proposes a single track from a camera's image plane measurement.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.CameraTrackProposer.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Tracking.Management.CameraTrackProposer" /> class 
+            with a default set of parameters.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.CameraTrackProposer.CreateTracks(Baselabs.Statistics.Spaces.CameraSpace)">
+      <summary>
+            Creates a track from the camera's measurement.
+            </summary>
+      <param name="measurement">The measurement of type <see cref="T:Baselabs.Statistics.Spaces.CameraSpace" /> from 
+            which a track of type <see cref="T:Baselabs.Statistics.Spaces.CASpace" /> is proposed.</param>
+      <returns>
+            A collection that contains the proposed single track.
+            </returns>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.CameraTrackProposer.EgoVelocity">
+      <summary>
+            Gets or sets the ego velocity magnitude <latex>v_e</latex> of the camera. 
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is infinite or not a number.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.CameraTrackProposer.InflationSigmaAcceleration">
+      <summary>
+            The standard deviation of the inflation noise for the acceleration component of the proposed track in m/s².
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.CameraTrackProposer.InflationSigmaHeading">
+      <summary>
+            The standard deviation of the inflation noise for the heading component of the proposed track in radians.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.CameraTrackProposer.InflationSigmaPositionX">
+      <summary>
+            The standard deviation of the inflation noise for the position X component of the proposed track in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.CameraTrackProposer.InflationSigmaPositionY">
+      <summary>
+            The standard deviation of the inflation noise for the position Y component of the proposed track in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.CameraTrackProposer.InflationSigmaVelocity">
+      <summary>
+            The standard deviation of the inflation noise for the velocity component of the proposed track in m/s.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.CameraTrackProposer.InitialExistenceProbability">
+      <summary>
+            Gets or sets the existence probability of the proposed track.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="value" /> to be set is not between zero and one.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.CameraTrackProposer.SigmaColumn">
+      <summary>
+            The standard deviation of the column measurement noise in pixels.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.CameraTrackProposer.SigmaRow">
+      <summary>
+            The standard deviation of the row measurement noise in pixels.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, infinite or not a number.</exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Tracking.Management.ClutterRemover">
+      <summary>
+            Clutter remover class for tracks with constant-acceleration state space based on a minimum track existence.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.ClutterRemover.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Tracking.Management.ClutterRemover" /> class for 
+            constant-acceleration state space with the default value for the minimum existence probability.
+            </summary>
+    </member>
+    <member name="T:Baselabs.Statistics.Tracking.Management.CrossTrafficRadarTrackProposer">
+      <summary>
+            Proposes two tracks from a radar measurement.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.CrossTrafficRadarTrackProposer.#ctor">
+      <summary>
+        <markup>
+          <include item="SMCAutoDocConstructor">
+            <parameter>Baselabs.Statistics.Tracking.Management.CrossTrafficRadarTrackProposer</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.CrossTrafficRadarTrackProposer.CreateTracks(Baselabs.Statistics.Spaces.RadarSpace)">
+      <summary>
+            Creates tracks from a radar measurement.
+            </summary>
+      <param name="measurement">The measurement of type <see cref="T:Baselabs.Statistics.Spaces.RadarSpace" /> from which tracks of type <see cref="T:Baselabs.Statistics.Spaces.CASpace" /> are proposed.</param>
+      <returns>
+            A collection that contains the proposed tracks.
+            </returns>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.CrossTrafficRadarTrackProposer.InitialExistenceProbability">
+      <summary>
+            Gets or sets the existence probability of the proposed track.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="value" /> to be set is not between zero and one.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.CrossTrafficRadarTrackProposer.SigmaAcceleration">
+      <summary>
+            The standard deviation of the noise for the acceleration component of the proposed track in m/s².
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.CrossTrafficRadarTrackProposer.SigmaHeading">
+      <summary>
+            The standard deviation of the noise for the heading component of the proposed track in radians.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Tracking.Management.OutOfViewCEPRemover">
+      <summary>
+            An out of view track remover for tracks with constant-acceleration state space that uses the estimate 
+            of the Circular Error Probability from the track's position covariance to determine whether the track should be deleted.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.OutOfViewCEPRemover.#ctor">
+      <summary>
+            Initializes a new instance of <see cref="T:Baselabs.Statistics.Tracking.Management.OutOfViewCEPRemover" /> class for
+            constant-acceleration state space with the default maximum CEP value.
+            </summary>
+    </member>
+    <member name="T:Baselabs.Statistics.Tracking.Management.OutOfViewDRMSRemover">
+      <summary>
+            An out of view track remover for constant-acceleration state space that uses the estimate of the 
+            Distance Root Mean Square (DRMS) from the track's position covariance to determine whether the track should be deleted.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.OutOfViewDRMSRemover.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Tracking.Management.OutOfViewDRMSRemover" /> class for constant-acceleration
+            state space with the default maximum DRMS value.
+            </summary>
+    </member>
+    <member name="T:Baselabs.Statistics.Tracking.Management.OutOfViewEnclosingCircleRemover">
+      <summary>
+            An out of view track remover for tracks with constant-acceleration state space which uses the estimate of minimum enclosing circle from the track's position
+            covariance to determine whether the track should be deleted.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.OutOfViewEnclosingCircleRemover.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Tracking.Management.OutOfViewEnclosingCircleRemover" /> class
+            for constant-acceleration state space with 10 meters as the maximum diameter of the minimum enclosing circle.
+            </summary>
+    </member>
+    <member name="T:Baselabs.Statistics.Tracking.Management.OutOfViewRemover">
+      <summary>
+            An out of view track remover for tracks with constant-acceleration state space that uses the position
+            covariance of a track to determine whether the track should be deleted.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.OutOfViewRemover.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Tracking.Management.OutOfViewRemover" /> class 
+            for constant-acceleration state space with the default values of maximum track position 
+            uncertainties for X and Y directions.
+            </summary>
+    </member>
+    <member name="T:Baselabs.Statistics.Tracking.Management.RadarTrackProposer">
+      <summary>
+            Proposes a single track from a radar measurement.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.RadarTrackProposer.#ctor">
+      <summary>
+        <markup>
+          <include item="SMCAutoDocConstructor">
+            <parameter>Baselabs.Statistics.Tracking.Management.RadarTrackProposer</parameter>
+          </include>
+        </markup>
+      </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.RadarTrackProposer.CreateTracks(Baselabs.Statistics.Spaces.RadarSpace)">
+      <summary>
+            Creates a track from the radar's measurement.
+            </summary>
+      <param name="measurement">The measurement from which the track is proposed.</param>
+      <returns>
+            A collection that contains the created single track or an empty collection if the state of the track cannot be determined.
+            </returns>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.RadarTrackProposer.InflationSigmaAcceleration">
+      <summary>
+            The standard deviation of the noise for the acceleration component of the proposed track in m/s².
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.RadarTrackProposer.InflationSigmaHeading">
+      <summary>
+            The standard deviation of the noise for the heading component of the proposed track in radians.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.RadarTrackProposer.InitialExistenceProbability">
+      <summary>
+            Gets or sets the existence probability of the proposed track.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="value" /> to be set is not between zero and one.
+            </exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer">
+      <summary>
+            Proposes a single track from a smart sensor measurement with longitudinal velocity only.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer" /> class 
+            with a default set of parameters.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.CreateTracks(Baselabs.Statistics.Spaces.CVxSpace)">
+      <summary>
+            Creates a track from the smart sensor's measurement.
+            </summary>
+      <param name="measurement">The measurement of type <see cref="T:Baselabs.Statistics.Spaces.CVxSpace" /> from which a track of type <see cref="T:Baselabs.Statistics.Spaces.CASpace" /> is proposed.</param>
+      <returns>
+            A collection that contains the proposed single track.
+            </returns>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.EgoAngularRate">
+      <summary>
+            Gets or sets the ego angular rate <latex>\omega_e</latex> of the smart sensor around its z-axis. 
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is infinite or not a number.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.EgoVelocity">
+      <summary>
+            Gets or sets the ego velocity magnitude <latex>v_e</latex> of the smart sensor. 
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is infinite or not a number.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.InflationSigmaAcceleration">
+      <summary>
+            The standard deviation of the inflation noise for acceleration component of the proposed track in m/s².
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.InflationSigmaHeading">
+      <summary>
+            The standard deviation of the inflation noise for the heading component of the proposed track in radians.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.InflationSigmaPositionX">
+      <summary>
+            The standard deviation of the inflation noise for the position X component of the proposed track in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.InflationSigmaPositionY">
+      <summary>
+            The standard deviation of the inflation noise for the position Y component of the proposed track in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.InflationSigmaVelocity">
+      <summary>
+            The standard deviation of the inflation noise for the velocity component of the proposed track in m/s.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.InitialExistenceProbability">
+      <summary>
+            Gets or sets the existence probability of the proposed track.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="value" /> to be set is not between zero and one.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.SensorPositionX">
+      <summary>
+            The x-coordinate <latex>x_r</latex> of the position of the smart sensor in the global coordinate frame in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is infinite or not a number.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.SensorPositionY">
+      <summary>
+            The y-coordinate <latex>y_r</latex> of the position of the smart sensor in the global coordinate frame in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is infinite or not a number.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.SensorRotationZ">
+      <summary>
+            The rotation <latex>\varphi_r</latex> of the smart sensor around its z-axis in radians. 
+            A positive value is assumed for counterclockwise rotation.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is less than -π, greater than or equal to π, infinite or not a number.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.SigmaPositionX">
+      <summary>
+            The standard deviation of the X position measurement noise in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.SigmaPositionY">
+      <summary>
+            The standard deviation of the Y position measurement noise in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorLongitudinalVelocityTrackProposer.SigmaVelocityX">
+      <summary>
+            The standard deviation of the X velocity measurement noise in m/s.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Tracking.Management.SmartSensorTrackProposer">
+      <summary>
+            Proposes a single track from a smart sensor measurement.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.SmartSensorTrackProposer.#ctor">
+      <summary>
+            Initializes a new instance of <see cref="T:Baselabs.Statistics.Tracking.Management.SmartSensorTrackProposer" /> class.
+            </summary>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorTrackProposer.AssumedHeading">
+      <summary>
+            The assumed heading of the proposed stationary track in radians.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Management.SmartSensorTrackProposer.CreateTracks(Baselabs.Statistics.Spaces.CVComponentsSpace)">
+      <summary>
+            Creates a track from the smart sensor's measurement.
+            </summary>
+      <param name="measurement">The measurement of type <see cref="T:Baselabs.Statistics.Spaces.CVComponentsSpace" /> from which a track of type <see cref="T:Baselabs.Statistics.Spaces.CASpace" /> is proposed.</param>
+      <returns>
+            A collection that contains the proposed single track.
+            </returns>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorTrackProposer.InflationSigmaAcceleration">
+      <summary>
+            The standard deviation of the inflation noise for acceleration component of the proposed track in m/s².
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorTrackProposer.InflationSigmaHeading">
+      <summary>
+            The standard deviation of the inflation noise for the heading component of the proposed track in radians.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less than zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorTrackProposer.InflationSigmaVelocity">
+      <summary>
+            The standard deviation of the inflation noise for the velocity component of the proposed track in m/s.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less than zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorTrackProposer.InitialExistenceProbability">
+      <summary>
+            Gets or sets the existence probability of the proposed track.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="value" /> to be set is not between zero and one.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorTrackProposer.SigmaHeading">
+      <summary>
+            The standard deviation of the noise for the heading component of the proposed stationary track in radians.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Management.SmartSensorTrackProposer.SigmaVelocity">
+      <summary>
+            The standard deviation of the noise for the velocity component of the proposed moving track in m/s.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">The value to set is less or equal to zero, is infinite or not a number.</exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel">
+      <summary>
+            A detection model for a polar smart sensor with an arbitrary 2D pose and with <see cref="T:Baselabs.Statistics.Spaces.CASpace" /> 
+            as detection space and a constant detection probability inside its field of view. 
+            The model assumes that at maximum one detection can originate from one object inside its field of view.
+            The field of view is described by a circular ring sector with the sensor located at the
+            origin of the sector's coordinate system.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel" /> class with a default
+            field of view, sensor pose, gate probability and detection probability.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel" /> class with the specified
+            field of view, offsets, detection probability and gate probability.
+            </summary>
+      <param name="minimumRange">The minimum range of the field of view in meters.</param>
+      <param name="maximumRange">The maximum range of the field of view in meters.</param>
+      <param name="minimumPhi">The minimum azimuth angle of the field of view in radians.</param>
+      <param name="maximumPhi">The maximum  azimuth angle of the field of view in radians.</param>
+      <param name="sensorPositionX">The sensor field of view displacement along the X axis relative to the coordinate frame of the detections in meters.</param>
+      <param name="sensorPositionY">The sensor field of view displacement along the Y axis relative to the coordinate frame of the detections in meters.</param>
+      <param name="sensorRotationZ">The sensor field of view rotation around the Z axis relative to the coordinate frame of the detections in radians.</param>
+      <param name="detectionProbability">The detection probability.</param>
+      <param name="gateProbability">The gate probability.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="minimumRange" /> is less than zero, infinite or not a number
+            <para>or</para><paramref name="maximumRange" /> is less than zero, infinite or not a number
+            <para>or</para><paramref name="minimumPhi" /> is less than -π, greater than or equal to π, infinite or not a number
+            <para>or</para><paramref name="maximumPhi" /> is less than -π, greater than or equal to π, infinite or not a number
+            <para>or</para><paramref name="sensorPositionX" /> is infinite or not a number
+            <para>or</para><paramref name="sensorPositionY" /> is infinite or not a number
+            <para>or</para><paramref name="sensorRotationZ" /> is less than -π, greater than or equal to π, infinite or not a number
+            <para>or</para><paramref name="detectionProbability" /> is not between zero and one
+            <para>or</para><paramref name="gateProbability" /> is not between zero and one.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="minimumRange" /> is greater than or equal to <paramref name="maximumRange" /><para>or</para><paramref name="minimumPhi" /> is greater than or equal to <paramref name="maximumPhi" />.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel.DetectionProbability">
+      <summary>
+            Gets or sets the detection probability for one detection inside the field of view.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="value" /> to be set is not between zero and one.
+            </exception>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel.GetDetectionProbabilityInsideFieldOfView(Baselabs.Statistics.Spaces.CASpace)">
+      <summary>
+            Calculates the detection probability for one detection inside the field of view.
+            </summary>
+      <param name="state">The state condition inside the field of view.</param>
+      <returns>
+            The probability for one detection at <paramref name="state" />.
+            </returns>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel.MaximumPhi">
+      <summary>
+            Gets or sets the maximum azimuth angle of the field of view in radians.
+            A positive value is assumed for counterclockwise rotation.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is less than -π, greater than or equal to π, infinite or not a number.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+            The value to set is less than or equal to <see cref="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel`1.MinimumPhi" />.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel.MaximumRange">
+      <summary>
+            Gets or sets the maximum range of the field of view in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is less than zero, infinite or not a number.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+            The value to set is less than or equal to <see cref="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel`1.MinimumRange" />.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel.MinimumPhi">
+      <summary>
+            Gets or sets the minimum azimuth angle of the field of view in radians.
+            A positive value is assumed for counterclockwise rotation.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is less than -π, greater than or equal to π, infinite or not a number.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+            The value to set is greater than or equal to <see cref="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel`1.MaximumPhi" />.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel.MinimumRange">
+      <summary>
+            Gets or sets the minimum range of the field of view in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is less than zero, infinite or not a number.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+            The value to set is greater than or equal to <see cref="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel`1.MaximumRange" />.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel.SensorPositionX">
+      <summary>
+            Gets or sets the X component of the sensor's mounting position in the coordinate system of the detections in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is infinite or not a number.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel.SensorPositionY">
+      <summary>
+            Gets or sets the Y component of the sensor's mounting position in the coordinate system of the detections in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is infinite or not a number.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel.SensorRotationZ">
+      <summary>
+            Gets or sets the smart sensor rotation around Z axis relative to the coordinate
+            system of the detections in radians. A positive value is assumed for counterclockwise rotation.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is less than -π, greater than or equal to π, infinite or not a number.
+            </exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Tracking.Models.RadarDetectionModel">
+      <summary>
+            A detection model for a radar sensor with <see cref="T:Baselabs.Statistics.Spaces.RadarSpace" /> as measurement space and a constant
+            detection probability inside its field of view.
+            The field of view is described by a circular ring sector with the sensor located at the origin.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Models.RadarDetectionModel.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Tracking.Models.RadarDetectionModel" /> class.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Models.RadarDetectionModel.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Tracking.Models.RadarDetectionModel" /> class with the specified
+            field of view, detection probability and gate probability.
+            </summary>
+      <param name="minimumRange">The minimum range of the field of view in meters.</param>
+      <param name="maximumRange">The maximum range of the field of view in meters.</param>
+      <param name="minimumPhi">The minimum azimuth angle of the field of view in radians.</param>
+      <param name="maximumPhi">The maximum  azimuth angle of the field of view in radians.</param>
+      <param name="detectionProbability">The detection probability.</param>
+      <param name="gateProbability">The gate probability.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="minimumRange" /> is less than zero, infinite or not a number
+            <para>or</para><paramref name="maximumRange" /> is less than zero, infinite or not a number
+            <para>or</para><paramref name="minimumPhi" /> is less than -π , greater than or equal to π, infinite or not a number
+            <para>or</para><paramref name="maximumPhi" /> is less than -π, greater than or equal to π, infinite or not a number
+            <para>or</para><paramref name="detectionProbability" /> is not between zero and one
+            <para>or</para><paramref name="gateProbability" /> is not between zero and one.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="minimumRange" /> is greater than or equal to <paramref name="maximumRange" /><para>or</para><paramref name="minimumPhi" /> is greater than or equal to <paramref name="maximumPhi" />.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.RadarDetectionModel.DetectionProbability">
+      <summary>
+            Gets or sets the detection probability for one detection inside the field of view.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="value" /> to be set is not between zero and one.
+            </exception>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Models.RadarDetectionModel.GetDetectionProbabilityInsideFieldOfView(Baselabs.Statistics.Spaces.RadarSpace)">
+      <summary>
+            Calculates the detection probability for one detection inside the field of view.
+            </summary>
+      <param name="state">The state condition inside the field of view.</param>
+      <returns>
+            The probability for one detection at <paramref name="state" />.
+            </returns>
+    </member>
+    <member name="T:Baselabs.Statistics.Tracking.Models.SmartCameraDetectionModel">
+      <summary>
+            A detection model for a smart camera with an arbitrary 2D pose and with <see cref="T:Baselabs.Statistics.Spaces.CASpace" /> 
+            as detection space. Its detection probability inside its field of view depends on the heading of the object. 
+            
+            The model assumes that at maximum one detection can originate from one object inside its field of view.
+            The field of view is described by a circular ring sector with the sensor located at the
+            origin of the sector's coordinate system.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Models.SmartCameraDetectionModel.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Tracking.Models.SmartCameraDetectionModel" /> class with a default
+            field of view, sensor pose, gate probability, detection probability and front and rear detection tolerance.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Models.SmartCameraDetectionModel.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Tracking.Models.SmartCameraDetectionModel" /> class with the specified
+            field of view, offsets, detection probability, gate probability and front and rear detection tolerance.
+            </summary>
+      <param name="minimumRange">The minimum range of the field of view in meters.</param>
+      <param name="maximumRange">The maximum range of the field of view in meters.</param>
+      <param name="minimumPhi">The minimum azimuth angle of the field of view in radians.</param>
+      <param name="maximumPhi">The maximum  azimuth angle of the field of view in radians.</param>
+      <param name="sensorPositionX">The sensor field of view displacement along the X axis relative to the coordinate frame of the detections in meters.</param>
+      <param name="sensorPositionY">The sensor field of view displacement along the Y axis relative to the coordinate frame of the detections in meters.</param>
+      <param name="sensorRotationZ">The sensor field of view rotation around the Z axis relative to the coordinate frame of the detections in radians.</param>
+      <param name="detectionProbability">The detection probability.</param>
+      <param name="gateProbability">The gate probability.</param>
+      <param name="maxFrontDetectionAngle">The angle tolerance for detecting objects whose front is facing the sensor.</param>
+      <param name="maxRearDetectionAngle">The angle tolerance for detecting objects whose rear is facing the sensor.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="minimumRange" /> is less than zero, infinite or not a number
+            <para>or</para><paramref name="maximumRange" /> is less than zero, infinite or not a number
+            <para>or</para><paramref name="minimumPhi" /> is less than -π, greater than or equal to π, infinite or not a number
+            <para>or</para><paramref name="maximumPhi" /> is less than -π, greater than or equal to π, infinite or not a number
+            <para>or</para><paramref name="sensorPositionX" /> is infinite or not a number
+            <para>or</para><paramref name="sensorPositionY" /> is infinite or not a number
+            <para>or</para><paramref name="sensorRotationZ" /> is less than -π, greater than or equal to π, infinite or not a number
+            <para>or</para><paramref name="detectionProbability" /> is not between zero and one
+            <para>or</para><paramref name="gateProbability" /> is not between zero and one
+            <para>or</para><paramref name="maxFrontDetectionAngle" /> is less than zero or greater than π/2
+            <para>or</para><paramref name="maxRearDetectionAngle" /> is less than zero or greater than π/2.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="minimumRange" /> is greater than or equal to <paramref name="maximumRange" /><para>or</para><paramref name="minimumPhi" /> is greater than or equal to <paramref name="maximumPhi" />.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.SmartCameraDetectionModel.MaximumPhi">
+      <summary>
+            Gets or sets the maximum azimuth angle of the field of view in radians.
+            A positive value is assumed for counterclockwise rotation.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is less than -π, greater than or equal to π, infinite or not a number.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+            The value to set is less than or equal to <see cref="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel`1.MinimumPhi" />.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.SmartCameraDetectionModel.MaximumRange">
+      <summary>
+            Gets or sets the maximum range of the field of view in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is less than zero, infinite or not a number.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+            The value to set is less than or equal to <see cref="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel`1.MinimumRange" />.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.SmartCameraDetectionModel.MinimumPhi">
+      <summary>
+            Gets or sets the minimum azimuth angle of the field of view in radians.
+            A positive value is assumed for counterclockwise rotation.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is less than -π, greater than or equal to π, infinite or not a number.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+            The value to set is greater than or equal to <see cref="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel`1.MaximumPhi" />.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.SmartCameraDetectionModel.MinimumRange">
+      <summary>
+            Gets or sets the minimum range of the field of view in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is less than zero, infinite or not a number.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+            The value to set is greater than or equal to <see cref="P:Baselabs.Statistics.Tracking.Models.PolarSmartSensorDetectionModel`1.MaximumRange" />.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.SmartCameraDetectionModel.SensorPositionX">
+      <summary>
+            Gets or sets the X component of the sensor's mounting position in the coordinate system of the detections in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is infinite or not a number.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.SmartCameraDetectionModel.SensorPositionY">
+      <summary>
+            Gets or sets the Y component of the sensor's mounting position in the coordinate system of the detections in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is infinite or not a number.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.SmartCameraDetectionModel.SensorRotationZ">
+      <summary>
+            Gets or sets the smart sensor rotation around Z axis relative to the coordinate
+            system of the detections in radians. A positive value is assumed for counterclockwise rotation.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value to set is less than -π, greater than or equal to π, infinite or not a number.
+            </exception>
+    </member>
+    <member name="T:Baselabs.Statistics.Tracking.Models.SmartSensorDetectionModel">
+      <summary>
+            A detection model for a smart sensor with a field of view in the form of a polygon.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Models.SmartSensorDetectionModel.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:Baselabs.Statistics.Tracking.Models.SmartSensorDetectionModel" /> class 
+            with a default field of view boundary polygon, default gate and detection probabilities.
+            </summary>
+    </member>
+    <member name="M:Baselabs.Statistics.Tracking.Models.SmartSensorDetectionModel.GetDetectionProbabilityInsideFieldOfView(Baselabs.Statistics.Spaces.CASpace)">
+      <summary>
+            Calculates the detection probability for one detection inside the field of view.
+            </summary>
+      <param name="state">The state condition inside the field of view.</param>
+      <returns>
+            The probability for one detection at <paramref name="state" />.
+            </returns>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.SmartSensorDetectionModel.LongRangeDetectionProbability">
+      <summary>
+            Gets or sets the detection probability in the long range radar's field of view.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="value" /> to be set is not between zero and one.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.SmartSensorDetectionModel.PolygonBoundary">
+      <summary>
+            Gets or sets the field of view boundary polygon with the coordinates of vertices given in meters.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            One of the coordinates of the vertices in the boundary polygon <see cref="P:Baselabs.Statistics.Tracking.Models.SmartSensorDetectionModel`1.PolygonBoundary" /> is infinite or not a number 
+            </exception>
+      <exception cref="T:System.ArgumentException">
+            The number of vertices in field of view boundary polygon <see cref="P:Baselabs.Statistics.Tracking.Models.SmartSensorDetectionModel`1.PolygonBoundary" /> is less than 3
+            <para> or </para>
+            the number of vertices in polygon <see cref="P:Baselabs.Statistics.Tracking.Models.SmartSensorDetectionModel`1.PolygonBoundary" /> is larger than the maximum 
+            allowed number of vertices.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.SmartSensorDetectionModel.ShortRange">
+      <summary>
+            Gets or sets the maximum range of the short range radar.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The value is infinite or not a number.
+            </exception>
+    </member>
+    <member name="P:Baselabs.Statistics.Tracking.Models.SmartSensorDetectionModel.ShortRangeDetectionProbability">
+      <summary>
+            Gets or sets the detection probability in the short range radar's field of view.
+            </summary>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="value" /> to be set is not between zero and one.
+            </exception>
+    </member>
+  </members>
+</doc>
