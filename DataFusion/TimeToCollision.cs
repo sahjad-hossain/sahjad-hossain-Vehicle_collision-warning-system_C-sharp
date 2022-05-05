@@ -15,7 +15,7 @@ namespace DataFusion
             double ttc = 250;
             double mindis = 250.0;
             double OTHVelocity = 20.0;
-
+            //Tracking
             //TrackExistP = track.Existence.ExistenceProbability;
             //DistanceX = trackState.Expectation.X;
             //LateralTProab = track.State.Expectation.X;
